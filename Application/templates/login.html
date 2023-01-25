@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+<div class="row">
+    <div class="col-sm-4 offset-4">
+        <h3 class="alert alert-warning">Passinger Login Form</h3>
+        <form action="" method="POST" novalidate>
+ {% csrf_token %}
+ <center>
+     <div>{% if form.non_field_errors %}
+     {% for error in form.non_field_errors%}
+     {{error}}
+     {% endfor %}
+         {% endif %}</div><br>
+
+  <div>{% for fm in form %}
+  {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}<br><br>
+      {% endfor %}</div>
+
+ <input type="submit" value="Login">
+  </form>
+
+<a href="{% url 'signin' %}" class="btn btn-success btn-sm">SignUp</a>
+  </center>
+
+
+
+{% endblock %}
